@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CostaBecker Soluções em Tecnologia: Inovação e eficiência em desenvolvimento de software sob medida para modernizar e automatizar seus processos.">
+    <title>CostaBecker - Soluções em Tecnologia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset Básico e Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #333; /* Cor de texto padrão */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #E67E22; /* Laranja */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cores Baseadas na Logo */
+        :root {
+            --primary-color: #2C3E50; /* Azul Escuro */
+            --secondary-color: #E67E22; /* Laranja */
+            --light-color: #FFFFFF; /* Branco */
+            --dark-color: #333; /* Cinza Escuro para texto */
+            --light-gray-bg: #f4f4f4; /* Cinza claro para fundos alternados */
+        }
+
+        /* Botão Call-to-Action Principal */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none; /* Remover sublinhado */
+        }
+
+        .cta-button:hover {
+            background-color: #d35400; /* Laranja mais escuro no hover */
+            transform: translateY(-2px);
+            text-decoration: none; /* Manter sem sublinhado */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem 0;
+            position: fixed; /* Fixa no topo */
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 80px; /* Ajuste conforme necessário */
+            vertical-align: middle;
+        }
+        /* Estilo opcional se usar texto ao lado do logo */
+        .navbar .logo span {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            line-height: 1.2;
+        }
+        .navbar .logo span small {
+            font-size: 0.8em;
+            color: var(--secondary-color); /* Slogan em laranja */
+            font-family: 'Lato', sans-serif; /* Usar fonte do corpo para slogan */
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar nav ul li {
+            margin-left: 20px;
+        }
+
+        .navbar nav ul li a {
+            color: var(--light-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav ul li a:hover {
+            color: var(--secondary-color); /* Laranja no hover */
+            text-decoration: none;
+        }
+
+        .cta-nav-button {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-nav-button:hover {
+            background-color: #d35400;
+            color: var(--light-color);
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none; /* Escondido por padrão */
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 160px 0 100px 0; /* Aumentar padding-top para compensar navbar fixa */
+            text-align: center;
+            position: relative; /* Para posicionar o ícone */
+            overflow: hidden;
+        }
+
+        .hero-section h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .hero-icon {
+            position: absolute;
+            bottom: -30px;
+            right: 50px;
+            font-size: 10rem;
+            color: rgba(230, 126, 34, 0.2); /* Laranja semi-transparente */
+            font-family: monospace; /* Para o ícone </> */
+            user-select: none; /* Evitar seleção */
+            transform: rotate(-15deg);
+            z-index: 1; /* Garantir que fique atrás do conteúdo se necessário */
+        }
+        .hero-section .container {
+            position: relative;
+             z-index: 2; /* Garantir que o conteúdo fique acima do ícone */
+        }
+
+
+        /* Seções Padrão */
+        section {
+            padding: 60px 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--light-color);
+            text-align: center;
+        }
+        .about-section h2::after { /* Linha decorativa laranja */
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 20px auto; /* Centralizar linha */
+        }
+        .about-section .container {
+             max-width: 800px; /* Limitar largura para melhor leitura */
+        }
+
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--light-gray-bg);
+            text-align: center;
+        }
+
+        .services-section h2 {
+            margin-bottom: 0.5rem;
+        }
+        .services-section h2::after { /* Linha decorativa laranja */
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0 auto; /* Centralizar linha */
+        }
+
+        .section-subtitle {
+            color: #555;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
+            gap: 30px;
+            text-align: left; /* Alinhar texto dos cards à esquerda */
+        }
+
+        .service-item {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color); /* Laranja */
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            color: var(--primary-color); /* Azul */
+            margin-bottom: 0.8rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        .benefits-section h2 {
+            color: var(--light-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+         .benefits-section h2::after { /* Linha decorativa laranja */
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0 auto; /* Centralizar linha */
+        }
+
+        .benefits-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .benefits-list li {
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente branco */
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+             transition: background-color 0.3s ease;
+        }
+        .benefits-list li:hover {
+             background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem; /* Tamanho do emoji/ícone */
+            color: var(--secondary-color); /* Laranja */
+            margin-right: 15px;
+            flex-shrink: 0; /* Não encolher o ícone */
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-gray-bg);
+        }
+
+        .contact-section .container {
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem;
+        }
+        .contact-section h2::after { /* Linha decorativa laranja */
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 20px auto; /* Centralizar linha */
+        }
+
+
+        .contact-form {
+            margin-top: 2rem;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+             border-color: var(--secondary-color);
+             outline: none;
+             box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical; /* Permitir redimensionar verticalmente */
+        }
+
+        .contact-form .cta-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color); /* Um cinza mais escuro para o rodapé */
+            color: #aaa; /* Cinza claro para texto */
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 160px; /* Logo menor no rodapé */
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero-section h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.3rem; }
+
+            .navbar .container {
+                flex-wrap: wrap; /* Permitir quebra de linha */
+                position: relative; /* Para posicionar o menu */
+            }
+
+             .navbar .logo {
+                 order: 1; /* Logo primeiro */
+             }
+             .hamburger {
+                display: block; /* Mostrar hamburger */
+                order: 2; /* Hamburger ao lado do logo */
+            }
+
+
+            .navbar nav {
+                 order: 3; /* Menu abaixo */
+                 width: 100%;
+                 margin-top: 1rem; /* Espaço entre logo/hamburger e menu */
+            }
+
+            .navbar nav ul {
+                display: none; /* Esconder por padrão */
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: var(--primary-color);
+                position: absolute; /* Posicionar para sobrepor */
+                top: 60px; /* Ajustar baseado na altura da navbar */
+                left: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+             .navbar nav ul.active {
+                 display: flex; /* Mostrar quando ativo */
+             }
+
+            .navbar nav ul li {
+                margin: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+             .navbar nav ul li:first-child {
+                 border-top: none;
+             }
+
+            .navbar nav ul li a {
+                display: block; /* Ocupar toda a largura do item */
+                padding: 15px 0;
+            }
+             .cta-nav-button { /* Estilo do botão no menu mobile */
+                 padding: 15px 0;
+                 background: none;
+                 font-weight: bold;
+                 color: var(--secondary-color); /* Destacar o CTA */
+             }
+              .cta-nav-button:hover {
+                 background: none;
+                 color: var(--light-color);
+             }
+
+            .hero-section {
+                padding-top: 120px; /* Ajustar padding para navbar */
+                 padding-bottom: 60px;
+            }
+            .hero-icon {
+                font-size: 6rem;
+                bottom: -15px;
+                right: 10px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Uma coluna em mobile */
+            }
+             .benefits-list {
+                grid-template-columns: 1fr; /* Uma coluna em mobile */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <img src="logo-costabecker.png" alt="Logo CostaBecker Soluções em Tecnologia">
+                </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#services">Soluções</a></li>
+                    <li><a href="#benefits">Benefícios</a></li>
+                    <li><a href="#contact" class="cta-nav-button">Contato</a></li>
+                </ul>
+            </nav>
+             <button class="hamburger" aria-label="Abrir menu">☰</button>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h1>Inovação e Eficiência para Impulsionar Seu Negócio</h1>
+            <p>Desenvolvemos software sob medida para modernizar e automatizar seus processos, transformando desafios tecnológicos em oportunidades de crescimento.</p>
+            <a href="#services" class="cta-button">Descubra Nossas Soluções</a>
+            <div class="hero-icon">&lt;/&gt;</div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>Fundada em 2020, em meio à pandemia, a Costa Becker Soluções em Tecnologia nasceu com a missão de oferecer soluções inovadoras e eficientes no desenvolvimento de software.</p>
+            <p>Com um olhar voltado para a modernização e automação de processos, atendemos empresas de diversos segmentos, proporcionando sistemas personalizados que aumentam a produtividade e otimizam a gestão.</p>
+            <p>Nosso compromisso é entregar tecnologia de ponta, aliada à qualidade e confiabilidade, sempre buscando as melhores práticas do mercado.</p>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Nossas Soluções em Tecnologia</h2>
+            <p class="section-subtitle">Oferecemos um portfólio completo para atender às suas necessidades específicas.</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">📱</div> <h3>Desenvolvimento de Aplicativos</h3>
+                    <p>Criamos aplicativos móveis e web intuitivos e performáticos para engajar seus clientes e otimizar operações.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⚙️</div> <h3>Integração de Sistemas</h3>
+                    <p>Conectamos suas ferramentas e plataformas existentes para garantir um fluxo de dados eficiente e automatizado.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🧩</div> <h3>Soluções Sob Medida</h3>
+                    <p>Analisamos seus desafios e desenvolvemos software personalizado, totalmente alinhado aos seus objetivos de negócio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2>Por Que Escolher a CostaBecker?</h2>
+            <ul class="benefits-list">
+                <li><span class="benefit-icon">💡</span> Inovação e Eficiência</li>
+                <li><span class="benefit-icon">🚀</span> Modernização Garantida</li>
+                <li><span class="benefit-icon">🤖</span> Automação Inteligente</li>
+                <li><span class="benefit-icon">🛠️</span> Sistemas Personalizados</li>
+                <li><span class="benefit-icon">⭐</span> Qualidade e Confiabilidade</li>
+                <li><span class="benefit-icon">🎯</span> Foco no Resultado</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Pronto para Transformar Seus Desafios Tecnológicos?</h2>
+            <p>Vamos conversar sobre como as soluções da CostaBecker podem impulsionar a sua empresa. Entre em contato e solicite uma avaliação.</p>
+            <form action="#" method="POST" class="contact-form"> <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Enviar Mensagem</button>
+            </form>
+            <div class="contact-info">
+                <p>Ou entre em contato diretamente:</p>
+                <p>Email: <a href="mailto:contato@costabecker.com.br">contato@costabecker.com.br</a></p> <p>Telefone: <a href="tel:+5547999999999">+55 (47) 99999-9999</a></p> <p>Localização: Joinville, SC</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <img src="logo-costabecker.png" alt="Logo CostaBecker" class="footer-logo">
+            <p>&copy; <span id="current-year"></span> CostaBecker Soluções em Tecnologia. Todos os direitos reservados.</p>
+            </div>
+    </footer>
+
+    <script>
+        // Atualiza o ano no rodapé
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Lógica para o Menu Hamburguer
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('.navbar nav ul');
+        const navLinks = document.querySelectorAll('.navbar nav ul li a'); // Seleciona todos os links do menu
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('active'); // Alterna a classe 'active' na lista ul
+             // Alterna a aparência do ícone do hamburger (opcional)
+             if (navUl.classList.contains('active')) {
+                hamburger.textContent = '✕'; // Ícone 'X' quando aberto
+                hamburger.setAttribute('aria-label', 'Fechar menu');
+             } else {
+                hamburger.textContent = '☰'; // Ícone '☰' quando fechado
+                 hamburger.setAttribute('aria-label', 'Abrir menu');
+             }
+        });
+
+        // Fecha o menu ao clicar em um link (útil em mobile)
+         navLinks.forEach(link => {
+             link.addEventListener('click', () => {
+                 if (navUl.classList.contains('active')) {
+                     navUl.classList.remove('active');
+                     hamburger.textContent = '☰';
+                     hamburger.setAttribute('aria-label', 'Abrir menu');
+                 }
+             });
+         });
+
+         // Fecha o menu se clicar fora dele (opcional, mais complexo)
+         document.addEventListener('click', function(event) {
+            const isClickInsideNav = hamburger.contains(event.target) || navUl.contains(event.target);
+            if (!isClickInsideNav && navUl.classList.contains('active')) {
+                navUl.classList.remove('active');
+                hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-label', 'Abrir menu');
+            }
+        });
+
+    </script>
+
+</body>
+</html>
