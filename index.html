@@ -88,7 +88,7 @@
         .navbar {
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 0.5rem 0;
+            padding: 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -98,16 +98,17 @@
         }
 
         .navbar .container {
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .navbar .logo img {
-            height: 130px; /* Aumentado de 80px para 100px */
+            height: 80px;
             vertical-align: middle;
         }
-        /* Estilo opcional se usar texto ao lado do logo */
+
         .navbar .logo span {
             display: inline-block;
             vertical-align: middle;
@@ -123,6 +124,8 @@
         .navbar nav ul {
             list-style: none;
             display: flex;
+            margin: 0;
+            padding: 0;
         }
 
         .navbar nav ul li {
@@ -133,11 +136,11 @@
             color: var(--light-color);
             font-weight: bold;
             transition: color 0.3s ease;
-            padding: 5px 10px; /* Adiciona padding para melhor área de clique */
+            padding: 5px 10px;
         }
 
         .navbar nav ul li a:hover {
-            color: var(--secondary-color); /* Laranja no hover */
+            color: var(--secondary-color);
             text-decoration: none;
         }
 
@@ -156,23 +159,18 @@
         }
 
         .hamburger {
-            display: none; /* Escondido por padrão */
-            background: none;
-            border: none;
-            color: var(--light-color);
-            font-size: 2rem;
-            cursor: pointer;
+            display: none;
         }
 
         /* Hero Section */
         .hero-section {
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding-top: 200px;
+            padding-top: 120px; /* Reduzir o padding-top */
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 100vh; /* Garante altura mínima de 100% da viewport */
+            min-height: 100vh;
             display: flex;
             align-items: center;
         }
@@ -457,67 +455,91 @@
             h2 { font-size: 1.8rem; }
             h3 { font-size: 1.3rem; }
 
+            .navbar .logo img {
+                height: 60px;
+            }
+
             .navbar .container {
-                flex-wrap: wrap; /* Permitir quebra de linha */
-                position: relative; /* Para posicionar o menu */
+                padding: 5px 15px;
+                flex-wrap: wrap;
+                position: relative;
             }
 
-             .navbar .logo {
-                 order: 1; /* Logo primeiro */
-             }
-             .hamburger {
-                display: block; /* Mostrar hamburger */
-                order: 2; /* Hamburger ao lado do logo */
+            .navbar .logo {
+                order: 1;
             }
 
+            .hamburger {
+                display: block;
+                order: 2;
+                padding: 5px;
+                margin-left: auto;
+                background: none;
+                border: none;
+                color: var(--light-color);
+                font-size: 2rem;
+                cursor: pointer;
+            }
 
             .navbar nav {
-                 order: 3; /* Menu abaixo */
-                 width: 100%;
-                 margin-top: 1rem; /* Espaço entre logo/hamburger e menu */
+                order: 3;
+                width: 100%;
+                margin-top: 0;
+                display: none;
+            }
+
+            .navbar nav.active {
+                display: block;
             }
 
             .navbar nav ul {
-                display: none; /* Esconder por padrão */
+                display: flex;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
                 background-color: var(--primary-color);
-                position: absolute; /* Posicionar para sobrepor */
-                top: 60px; /* Ajustar baseado na altura da navbar */
+                position: absolute;
+                top: 70px;
                 left: 0;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 0;
+                margin: 0;
             }
 
-             .navbar nav ul.active {
-                 display: flex; /* Mostrar quando ativo */
-             }
+            .navbar nav ul.active {
+                display: flex;
+            }
 
             .navbar nav ul li {
                 margin: 0;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
-             .navbar nav ul li:first-child {
-                 border-top: none;
-             }
+
+            .navbar nav ul li:first-child {
+                border-top: none;
+            }
 
             .navbar nav ul li a {
-                display: block; /* Ocupar toda a largura do item */
+                display: block;
                 padding: 15px 0;
+                width: 100%;
             }
-             .cta-nav-button { /* Estilo do botão no menu mobile */
-                 padding: 15px 0;
-                 background: none;
-                 font-weight: bold;
-                 color: var(--secondary-color); /* Destacar o CTA */
-             }
-              .cta-nav-button:hover {
-                 background: none;
-                 color: var(--light-color);
-             }
+
+            .cta-nav-button {
+                padding: 15px 0;
+                background: none;
+                font-weight: bold;
+                color: var(--secondary-color);
+                width: 100%;
+            }
+
+            .cta-nav-button:hover {
+                background: none;
+                color: var(--light-color);
+            }
 
             .hero-section {
-                padding-top: 120px; /* Ajustar padding para navbar */
+                padding-top: 100px; /* Ajustar padding-top no mobile */
                  padding-bottom: 60px;
             }
             .hero-icon {
@@ -577,7 +599,7 @@
 
     <section id="services" class="services-section">
         <div class="container">
-            <h2>NOSSAS SOLUÇÕES EM TECNOLOGIA</h2>
+            <h2>NOSSAS SOLUÇÕES</h2>
             <p class="section-subtitle">Oferecemos um portfólio completo para atender às suas necessidades específicas.</p>
             <div class="services-grid">
                 <div class="service-item">
@@ -650,36 +672,40 @@
 
         // Lógica para o Menu Hamburguer
         const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.navbar nav');
         const navUl = document.querySelector('.navbar nav ul');
-        const navLinks = document.querySelectorAll('.navbar nav ul li a'); // Seleciona todos os links do menu
+        const navLinks = document.querySelectorAll('.navbar nav ul li a');
 
         hamburger.addEventListener('click', () => {
-            navUl.classList.toggle('active'); // Alterna a classe 'active' na lista ul
-             // Alterna a aparência do ícone do hamburger (opcional)
-             if (navUl.classList.contains('active')) {
-                hamburger.textContent = '✕'; // Ícone 'X' quando aberto
+            nav.classList.toggle('active');
+            navUl.classList.toggle('active');
+            
+            if (nav.classList.contains('active')) {
+                hamburger.textContent = '✕';
                 hamburger.setAttribute('aria-label', 'Fechar menu');
-             } else {
-                hamburger.textContent = '☰'; // Ícone '☰' quando fechado
-                 hamburger.setAttribute('aria-label', 'Abrir menu');
-             }
+            } else {
+                hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-label', 'Abrir menu');
+            }
         });
 
-        // Fecha o menu ao clicar em um link (útil em mobile)
-         navLinks.forEach(link => {
-             link.addEventListener('click', () => {
-                 if (navUl.classList.contains('active')) {
-                     navUl.classList.remove('active');
-                     hamburger.textContent = '☰';
-                     hamburger.setAttribute('aria-label', 'Abrir menu');
-                 }
-             });
-         });
+        // Fecha o menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    navUl.classList.remove('active');
+                    hamburger.textContent = '☰';
+                    hamburger.setAttribute('aria-label', 'Abrir menu');
+                }
+            });
+        });
 
-         // Fecha o menu se clicar fora dele (opcional, mais complexo)
-         document.addEventListener('click', function(event) {
-            const isClickInsideNav = hamburger.contains(event.target) || navUl.contains(event.target);
-            if (!isClickInsideNav && navUl.classList.contains('active')) {
+        // Fecha o menu se clicar fora dele
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = hamburger.contains(event.target) || nav.contains(event.target);
+            if (!isClickInsideNav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
                 navUl.classList.remove('active');
                 hamburger.textContent = '☰';
                 hamburger.setAttribute('aria-label', 'Abrir menu');
