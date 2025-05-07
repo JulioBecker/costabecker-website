@@ -88,8 +88,8 @@
         .navbar {
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 1rem 0;
-            position: fixed; /* Fixa no topo */
+            padding: 0.5rem 0;
+            position: fixed;
             width: 100%;
             top: 0;
             left: 0;
@@ -104,7 +104,7 @@
         }
 
         .navbar .logo img {
-            height: 80px; /* Ajuste conforme necessário */
+            height: 130px; /* Aumentado de 80px para 100px */
             vertical-align: middle;
         }
         /* Estilo opcional se usar texto ao lado do logo */
@@ -133,6 +133,7 @@
             color: var(--light-color);
             font-weight: bold;
             transition: color 0.3s ease;
+            padding: 5px 10px; /* Adiciona padding para melhor área de clique */
         }
 
         .navbar nav ul li a:hover {
@@ -167,10 +168,13 @@
         .hero-section {
             background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 160px 0 100px 0; /* Aumentar padding-top para compensar navbar fixa */
+            padding-top: 200px;
             text-align: center;
-            position: relative; /* Para posicionar o ícone */
+            position: relative;
             overflow: hidden;
+            min-height: 100vh; /* Garante altura mínima de 100% da viewport */
+            display: flex;
+            align-items: center;
         }
 
         .hero-section h1 {
@@ -197,13 +201,22 @@
         }
         .hero-section .container {
             position: relative;
-             z-index: 2; /* Garantir que o conteúdo fique acima do ícone */
+            z-index: 2;
+            width: 100%;
         }
 
 
         /* Seções Padrão */
         section {
-            padding: 60px 0;
+            padding: 100px 0;
+            scroll-margin-top: 80px; /* Ajustado para compensar a navbar */
+            min-height: 100vh; /* Garante que cada seção ocupe a altura total da viewport */
+            display: flex;
+            align-items: center;
+        }
+
+        section .container {
+            width: 100%;
         }
 
         /* About Section */
@@ -532,10 +545,10 @@
                 </a>
             <nav>
                 <ul>
-                    <li><a href="#about">Sobre Nós</a></li>
-                    <li><a href="#services">Soluções</a></li>
-                    <li><a href="#benefits">Benefícios</a></li>
-                    <li><a href="#contact" class="cta-nav-button">Contato</a></li>
+                    <li><a href="#about">SOBRE NÓS</a></li>
+                    <li><a href="#services">SOLUÇÕES</a></li>
+                    <li><a href="#benefits">BENEFÍCIOS</a></li>
+                    <li><a href="#contact" class="cta-nav-button">CONTATO</a></li>
                 </ul>
             </nav>
              <button class="hamburger" aria-label="Abrir menu">☰</button>
@@ -544,7 +557,9 @@
 
     <section id="hero" class="hero-section">
         <div class="container">
-            <h1>Inovação e Eficiência para Impulsionar Seu Negócio</h1>
+            <h1>Inovação e Eficiência <br>
+                 para Impulsionar <br>
+                 Seu Negócio</h1>
             <p>Desenvolvemos software sob medida para modernizar e automatizar seus processos, transformando desafios tecnológicos em oportunidades de crescimento.</p>
             <a href="#services" class="cta-button">Descubra Nossas Soluções</a>
             <div class="hero-icon">&lt;/&gt;</div>
@@ -562,7 +577,7 @@
 
     <section id="services" class="services-section">
         <div class="container">
-            <h2>Nossas Soluções em Tecnologia</h2>
+            <h2>NOSSAS SOLUÇÕES EM TECNOLOGIA</h2>
             <p class="section-subtitle">Oferecemos um portfólio completo para atender às suas necessidades específicas.</p>
             <div class="services-grid">
                 <div class="service-item">
@@ -583,7 +598,7 @@
 
     <section id="benefits" class="benefits-section">
         <div class="container">
-            <h2>Por Que Escolher a CostaBecker?</h2>
+            <h2>POR QUE ESCOLHER A COSTA BECKER?</h2>
             <ul class="benefits-list">
                 <li><span class="benefit-icon">💡</span> Inovação e Eficiência</li>
                 <li><span class="benefit-icon">🚀</span> Modernização Garantida</li>
@@ -591,13 +606,15 @@
                 <li><span class="benefit-icon">🛠️</span> Sistemas Personalizados</li>
                 <li><span class="benefit-icon">⭐</span> Qualidade e Confiabilidade</li>
                 <li><span class="benefit-icon">🎯</span> Foco no Resultado</li>
+                <li><span class="benefit-icon">🔐</span> Segurança da Informação</li>
+                <li><span class="benefit-icon">🌍</span> Atendimento em Todo o Brasil e Exterior</li>
             </ul>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Pronto para Transformar Seus Desafios Tecnológicos?</h2>
+            <h2>PRONTO PARA TRANSFORMAR SEUS DESAFIOS TECNOLÓGICOS?</h2>
             <p>Vamos conversar sobre como as soluções da CostaBecker podem impulsionar a sua empresa. Entre em contato e solicite uma avaliação.</p>
             <form action="#" method="POST" class="contact-form"> <div class="form-group">
                     <label for="name">Nome:</label>
@@ -615,7 +632,7 @@
             </form>
             <div class="contact-info">
                 <p>Ou entre em contato diretamente:</p>
-                <p>Email: <a href="mailto:contato@costabecker.com.br">contato@costabecker.com.br</a></p> <p>Telefone: <a href="tel:+5547999999999">+55 (47) 99999-9999</a></p> <p>Localização: Joinville, SC</p>
+                <p>Email: <a href="mailto:beckersolucoestech@gmail.com">beckersolucoestech@gmail.com</a></p> <p>Telefone: <a href="https://wa.me/5547988379399">+55 (47) 988379399</a></p> <p>Localização: Joinville, SC</p>
             </div>
         </div>
     </section>
